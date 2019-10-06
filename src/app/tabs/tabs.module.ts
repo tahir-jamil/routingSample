@@ -3,6 +3,8 @@ import { NativeScriptRouterModule, NSEmptyOutletComponent } from "nativescript-a
 import { NativeScriptCommonModule } from "nativescript-angular/common";
 
 import { TabsComponent } from "./tabs.component";
+import { TabFourComponent } from "../tabFour/tabFour.component";
+import { TabThreeComponent } from "../tabThree/tabThree.component";
 
 @NgModule({
     imports: [
@@ -12,23 +14,35 @@ import { TabsComponent } from "./tabs.component";
             {
                 path: "default", component: TabsComponent, children: [
                     {
-                        path: "players",
-                        outlet: "playerTab",
+                        path: "tabOne",
+                        outlet: "tabOne",
                         component: NSEmptyOutletComponent,
-                        loadChildren: "~/app/player/players.module#PlayersModule",
+                        loadChildren: "~/app/tabOne/tabOne.module#TabOneModule",
                     },
                     {
-                        path: "teams",
-                        outlet: "teamTab",
+                        path: "teamFour",
+                        outlet: "teamFour",
+                        component: TabFourComponent,
+                    },
+                    {
+                        path: "tabThree",
+                        outlet: "tabThree",
+                        component: TabThreeComponent,
+                    },
+                    {
+                        path: "tabTwo",
+                        outlet: "tabTwo",
                         component: NSEmptyOutletComponent,
-                        loadChildren: "~/app/team/teams.module#TeamsModule"
+                        loadChildren: "~/app/tabTwo/tabTwo.module#TabTwoModule"
                     }
                 ]
             }
         ])
     ],
     declarations: [
-        TabsComponent
+        TabsComponent,
+        TabThreeComponent,
+        TabFourComponent
     ],
     providers: [
     ],

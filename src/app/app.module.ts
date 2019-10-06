@@ -18,25 +18,23 @@ export class MyErrorHandler implements ErrorHandler {
 }
 
 @NgModule({
-    bootstrap: [
-        AppComponent
-    ],
-    imports: [
-        NativeScriptModule,
-        AppRoutingModule,
-    ],
-    declarations: [
-        AppComponent,
-        ...COMPONENTS
-    ],
-    providers: [
-        DataService,
-        { provide: ErrorHandler, useClass: MyErrorHandler },
-        { provide: NgModuleFactoryLoader, useClass: NSModuleFactoryLoader }
-    ],
-    schemas: [
-        NO_ERRORS_SCHEMA
-    ]
+   bootstrap: [
+      AppComponent
+   ],
+   imports: [
+      NativeScriptModule,
+      AppRoutingModule
+   ],
+   declarations: [
+      AppComponent,
+      ...COMPONENTS,
+   ],
+   providers: [
+      DataService,
+   ],
+   schemas: [
+      NO_ERRORS_SCHEMA
+   ]
 })
 /*
 Pass your application module to the bootstrapModule function located in main.ts to start your app
