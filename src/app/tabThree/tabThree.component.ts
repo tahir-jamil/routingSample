@@ -30,30 +30,30 @@ export class TabThreeComponent implements OnInit {
   }
 
   public onLoadFinished(args: LoadEventData) {
-    // const webView = <WebView>args.object,
-    //   jsStr = `var parent = document.getElementsByClassName('site-header').item(0);
-    //   var style = document.createElement('style');
-    //   style.type = 'text/css';
-    //   style.innerHTML = ".site-header   {background-color: red !important;}";
-    //   parent.appendChild(style)`;
+    const webView = <WebView>args.object,
+      jsStr = `var parent = document.getElementsByClassName('site-header').item(0);
+      var style = document.createElement('style');
+      style.type = 'text/css';
+      style.innerHTML = ".site-header, .site-footer  {display: none !important;}";
+      parent.appendChild(style)`;
 
-    // if (webView.ios) {
-    //   webView.ios.evaluateJavaScriptCompletionHandler(jsStr,
-    //     function (
-    //       result,
-    //       error
-    //     ) {
-    //       if (error) {
-    //         console.log("error...");
-    //       }
-    //     });
-    // } else if (webView.android) {
-    //   // Works only on Android 19 and above
-    //   webView.android.evaluateJavascript(
-    //     jsStr,
-    //     null
-    //   );
-    // }
+    if (webView.ios) {
+      webView.ios.evaluateJavaScriptCompletionHandler(jsStr,
+        function (
+          result,
+          error
+        ) {
+          if (error) {
+            console.log("error...");
+          }
+        });
+    } else if (webView.android) {
+      // Works only on Android 19 and above
+      webView.android.evaluateJavascript(
+        jsStr,
+        null
+      );
+    }
 
   }
 
