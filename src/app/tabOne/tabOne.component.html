@@ -1,10 +1,40 @@
 <ActionBar title="Tab one" class="action-bar"></ActionBar>
 
-<GridLayout>
-    <StackLayout horizontalAlignment="center" verticalAlignment="middle">
-        <Label [nsRouterLink]="['../calculDeDeal']" text="calcul De Deal" class="list-group-item"></Label>
-        <Label [nsRouterLink]="['../calculImmeubleSix']" text="calcu Immeuble Six" class="list-group-item"></Label>
-        <Label [nsRouterLink]="['../calculPretConventionnel']" text="calcul-pret-conventionnel" class="list-group-item"></Label>
-        <Label [nsRouterLink]="['../calculPretPrive']" text="calcul-pret-prive" class="list-group-item"></Label>
-    </StackLayout>
+<GridLayout rows="auto,*">
+
+    <GridLayout rows="*" columns="*,*,*,*" class="tabsbar">
+        <Label col="0" class="text-center tabItem" text="De Deal"></Label>
+        <Label col="1" class="text-center tabItem" text="Immeuble Six"></Label>
+        <Label col="2" class="text-center tabItem" text="Conventionnel"></Label>
+        <Label col="3" class="text-center tabItem" text="Pret Prive"></Label>
+    </GridLayout>
+
+    <Pager row="1" [items]="items" [itemTemplateSelector]="templateSelector" #pager [selectedIndex]="currentPagerIndex"
+        (selectedIndexChange)="onIndexChanged($event)" class="pager" backgroundColor="lightsteelblue">
+
+        <ng-template pagerTemplateKey="calcOne" let-i="index" let-item="item">
+            <GridLayout class="pager-item" rows="auto,auto,*" columns="*">
+                <ns-calcul-de-deal></ns-calcul-de-deal>
+            </GridLayout>
+        </ng-template>
+
+        <ng-template pagerTemplateKey="calcTwo" let-i="index" let-item="item">
+            <GridLayout class="pager-item" rows="auto,auto,*" columns="*">
+                <ns-calcul-immeuble-six></ns-calcul-immeuble-six>
+            </GridLayout>
+        </ng-template>
+
+        <ng-template pagerTemplateKey="calcThree" let-i="index" let-item="item">
+            <GridLayout class="pager-item" rows="auto,auto,*" columns="*">
+                <ns-calcul-pret-conventionnel></ns-calcul-pret-conventionnel>
+            </GridLayout>
+        </ng-template>
+
+        <ng-template pagerTemplateKey="calcFour" let-i="index" let-item="item">
+            <GridLayout class="pager-item" rows="auto,auto,auto,*" columns="*" backgroundColor="white">
+                <ns-calcul-pret-prive></ns-calcul-pret-prive>
+            </GridLayout>
+        </ng-template>
+    </Pager>
+
 </GridLayout>

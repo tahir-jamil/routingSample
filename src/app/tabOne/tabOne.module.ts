@@ -6,6 +6,8 @@ import { CalculImmeubleSixComponent } from './calcul-immeuble-six/calcul-immeubl
 import { CalculPretConventionnelComponent } from './calcul-pret-conventionnel/calcul-pret-conventionnel.component';
 import { CalculPretPriveComponent } from './calcul-pret-prive/calcul-pret-prive.component';
 import { tabOneComponent } from './tabOne.component';
+import { NativeScriptFormsModule } from "nativescript-angular/forms"
+import { PagerModule } from "nativescript-pager/angular";
 
 @NgModule({
   imports: [
@@ -18,7 +20,9 @@ import { tabOneComponent } from './tabOne.component';
       { path: "calculImmeubleSix", component: CalculImmeubleSixComponent },
       { path: "calculPretConventionnel", component: CalculPretConventionnelComponent },
       { path: "calculPretPrive", component: CalculPretPriveComponent },
-    ])
+    ]),
+    NativeScriptFormsModule,
+    PagerModule
   ],
   declarations: [
     CalculDeDealComponent,
