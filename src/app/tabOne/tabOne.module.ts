@@ -8,6 +8,7 @@ import { CalculPretPriveComponent } from './calcul-pret-prive/calcul-pret-prive.
 import { tabOneComponent } from './tabOne.component';
 import { NativeScriptFormsModule } from "nativescript-angular/forms"
 import { PagerModule } from "nativescript-pager/angular";
+import { TabsBarComponent } from '../theme/components/tabs-bar';
 
 @NgModule({
   imports: [
@@ -22,14 +23,15 @@ import { PagerModule } from "nativescript-pager/angular";
       { path: "calculPretPrive", component: CalculPretPriveComponent },
     ]),
     NativeScriptFormsModule,
-    PagerModule
+    PagerModule,
   ],
   declarations: [
     CalculDeDealComponent,
     CalculImmeubleSixComponent,
     CalculPretConventionnelComponent,
     CalculPretPriveComponent,
-    tabOneComponent
+    tabOneComponent,
+    TabsBarComponent
   ]
 })
 export class TabOneModule { }

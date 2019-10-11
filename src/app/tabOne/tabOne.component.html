@@ -1,16 +1,12 @@
 <ActionBar title="Tab one" class="action-bar"></ActionBar>
 
 <GridLayout rows="auto,*">
-
-    <GridLayout rows="*" columns="*,*,*,*" class="tabsbar">
-        <Label col="0" class="text-center tabItem" text="De Deal"></Label>
-        <Label col="1" class="text-center tabItem" text="Immeuble Six"></Label>
-        <Label col="2" class="text-center tabItem" text="Conventionnel"></Label>
-        <Label col="3" class="text-center tabItem" text="Pret Prive"></Label>
-    </GridLayout>
+    
+    <tu-tabs-bar row="0"  (indexChange)="tabIndexChanged($event)" [selectedIndex]='currentPagerIndex' [tabs]='tabs'></tu-tabs-bar>
 
     <Pager row="1" [items]="items" [itemTemplateSelector]="templateSelector" #pager [selectedIndex]="currentPagerIndex"
-        (selectedIndexChange)="onIndexChanged($event)" class="pager" backgroundColor="lightsteelblue">
+    (selectedIndexChange)="onIndexChanged($event)"    
+    class="pager" backgroundColor="lightsteelblue">
 
         <ng-template pagerTemplateKey="calcOne" let-i="index" let-item="item">
             <GridLayout class="pager-item" rows="auto,auto,*" columns="*">

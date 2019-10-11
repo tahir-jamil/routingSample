@@ -23,7 +23,7 @@ export class MyErrorHandler implements ErrorHandler {
    ],
    imports: [
       NativeScriptModule,
-      AppRoutingModule
+      AppRoutingModule,
    ],
    declarations: [
       AppComponent,

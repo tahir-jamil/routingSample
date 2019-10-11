@@ -1,0 +1,36 @@
+.active {
+    color: blue;
+    border-bottom-color: blue;
+    border-bottom-width: 2dp;
+}
+
+.circle  {
+    border-radius: 100%;
+}
+
+.page-background  {
+    background-color: white;
+}
+
+.backgroundPrimary {
+    background-color: blue;    
+}
+
+
+.whiteBg {
+    background-color: white;
+}
+
+
+.index0 {
+    z-index: 0;
+}
+.index1 {
+    z-index: 1;
+}
+
+.roundedCorner {
+    border-top-left-radius: 10%;
+    border-top-right-radius: 10%;
+    z-index: 2;
+}

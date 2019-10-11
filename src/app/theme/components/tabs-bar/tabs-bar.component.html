@@ -1,0 +1,16 @@
+<GridLayout rows="auto" [row]="row" #heightTab [backgroundColor]="tabsbg" class="border-t-1" (loaded)="onLoaded()">
+  <StackLayout row="1" backgroundColor="transparent"  class="alignScroll index1"
+    verticalAlignemnt="top" orientation="horizontal">
+    <ScrollView #scroll orientation="horizontal" scrollBarIndicatorVisible="false">
+      <StackLayout [ngClass]="{'page-background p-t-8' : type == 'category', 'whiteBg' : type != 'category'}"
+        orientation="horizontal">
+        <StackLayout (tap)="tabIndexChanged(i,last)" orientation="vertical"
+          *ngFor='let item of tabs; let i=index, let last = last'>
+          <Label [text]="item.name" ripple rippleColor="rgb(56, 56, 56)"
+            [ngClass]="{'active   p-t-13 p-b-13 ' : i == selectedIndex,'text-muted   p-t-13 p-b-13 ' : i != selectedIndex, ' p-t-13 p-b-13 f-13 text-muted' : type != 'category', 'p-t-3 p-b-5 f-12  muted-dark' : type == 'category'}"
+            class="main-font f-13"  [paddingTop]="tabPadding" [paddingBottom]="tabPadding" [paddingLeft]="tabPadding" [paddingRight]="tabPadding"></Label>
+        </StackLayout>
+      </StackLayout>
+    </ScrollView>
+  </StackLayout>
+</GridLayout> 

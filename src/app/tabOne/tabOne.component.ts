@@ -15,6 +15,7 @@ export class tabOneComponent implements OnInit {
     currentPagerIndex = 0;
     latestReceivedIndex = 0;
     items: any;
+    tabs;
 
     @ViewChild('pager', { static: true }) pager: any;
     // tslint:disable-next-line:semicolon
@@ -53,32 +54,41 @@ export class tabOneComponent implements OnInit {
             { key: 'calcThree', title: 'calcul-pret-conventionnel' },
             { key: 'calcFour', title: 'calcul-pret-prive' }
         ]
+
+        this.tabs = [
+            { name: 'Calcul De Deal' },
+            { name: 'Calcu Immeuble Six' },
+            { name: 'Calcul-pret-conventionnel' },
+            { name: 'Calcul-pret-prive' },
+        ]
     }
 
     loadedImage($event) {
         console.log(`loaded image ${JSON.stringify($event)}`);
     }
 
-    prevPage() {
-        // this.debugObj(this.pager);
-        const newIndex = Math.max(0, this.currentPagerIndex - 1);
-        this.currentPagerIndex = newIndex;
-        this.latestReceivedIndex = newIndex;
-    }
+    // prevPage() {
+    //     // this.debugObj(this.pager);
+    //     const newIndex = Math.max(0, this.currentPagerIndex - 1);
+    //     this.currentPagerIndex = newIndex;
+    //     this.latestReceivedIndex = newIndex;
+    // }
 
-    nextPage() {
-        const newIndex = Math.min(this.numItems - 1, this.currentPagerIndex + 1);
-        this.currentPagerIndex = newIndex;
-        this.latestReceivedIndex = newIndex;
-    }
+    // nextPage() {
+    //     const newIndex = Math.min(this.numItems - 1, this.currentPagerIndex + 1);
+    //     this.currentPagerIndex = newIndex;
+    //     this.latestReceivedIndex = newIndex;
+    // }
 
     onIndexChanged($event) {
-        this.latestReceivedIndex = $event.newIndex;
+        // debugObj($event);
+        this.latestReceivedIndex = $event.value;
+        this.currentPagerIndex = $event.value;
     }
 
-    pageChanged(index: number) {
-        console.log(`pageChanged ${JSON.stringify(index)}`);
-    }
+    tabIndexChanged(index) {
+    this.currentPagerIndex = index;
+  }
 
     back() {
         this.routerExtension.back();
