@@ -10,6 +10,7 @@ import { Page, Observable, EventData } from 'tns-core-modules/ui/page/page';
 export class TabThreeComponent implements OnInit {
 
   constructor() { }
+  loader = true;
 
   ngOnInit() {
   }
@@ -19,6 +20,7 @@ export class TabThreeComponent implements OnInit {
   }
 
   onLoadStarted(args) {
+    this.loader = true;
     const page: Page = <Page>args.object;
     let message;
     if (!args.error) {
@@ -30,6 +32,7 @@ export class TabThreeComponent implements OnInit {
   }
 
   public onLoadFinished(args: LoadEventData) {
+    this.loader = false;
     const webView = <WebView>args.object,
       jsStr = `var parent = document.getElementsByClassName('site-header').item(0);
       var style = document.createElement('style');
