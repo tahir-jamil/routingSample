@@ -170,10 +170,8 @@ export class CalculDeDealComponent implements OnInit {
   }
 
   calcTap() {
-    this.favActive = !this.favActive;
   }
 
   downLoadTap() {
-    this.favActive = !this.favActive;
   }
 }
