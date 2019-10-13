@@ -1,84 +1,18 @@
-<!-- <ActionBar style="background-color: #7fc54a;">
-  <StackLayout orientation="vertical" width="100%" class="">
-    <WrapLayout class="header-Calculateur" width="100%">
-      <WrapLayout verticalAligment="center">
-        <Label text="FLIP PRÊT PRIVÉ" textWrap="true" width="100%" class="titredepage"></Label>
-      </WrapLayout>
-    </WrapLayout>
-  </StackLayout>
-</ActionBar> -->
-<!-- (ngModelChange)="ComparablePrixdevente = removeCurrencyPipeFormat($event);TotalDealRapide();"  -->
-<!-- | currency : 'USD' : 'symbol' : '1.0-0' | moneyFormat -->
-<StackLayout>
-  <Label (tap)="show1()" [text]="ComparablePrixdevente  | currency : 'USD' : 'symbol': '1.0-0' " textWrap="true"></Label>
-  <TextField [(ngModel)]="ComparablePrixdevente" hint="0 $"
-    class="input" keyboardType="number" maxLength="10" col="0" row="1"></TextField>
-</StackLayout>
+<GridLayout rows="" columns="">
+  <GridLayout width="auto" height="40%" verticalAlignment="top" horizontalAlignment="right"
+    [marginRight]="favAlignRight" [marginTop]="favAlignTop">
 
-<!-- <ScrollView iosOverflowSafeArea="false">
-  <StackLayout orientation="vertical">
-    <Label text="back" (tap)="goBack()" textWrap="true"></Label>
-    <GridLayout columns="*" rows="*, *, *" width="100%" horizontalAlignment="center" class="bloc-calculateur">
-      <Label (tap)="show1()" text="{{ 'calculateur.Comparable-Vendu' | L }}" class="bloc-calculateur-label" width="100%"
-        col="0" row="0"></Label>
-      <TextField [ngModel]="ComparablePrixdevente | currency : 'USD' : 'symbol' : '1.0-0' | moneyFormat"
-        (ngModelChange)="ComparablePrixdevente = removeCurrencyPipeFormat($event);TotalDealRapide();" hint="0 $"
-        class="input" keyboardType="number" maxLength="10" col="0" row="1"></TextField>
-
-      <Slider value="80" minValue="0" maxValue="10000000" width="90%" col="0" row="2"></Slider>
+    <GridLayout id="btnFab"  ripple rippleColor="#00ff00" [width]="favSize" [height]="favSize" verticalAlignment="top" (tap)="onButtonTap()">
+      <Label text="&#xe8b8;"  *ngIf="!favActive" class="md-icon view f-30" textAlignment="center"></Label>
+      <Label *ngIf="favActive"  text="&#xe5cd;" class="md-icon view f-30" textAlignment="center"></Label>
     </GridLayout>
-    <GridLayout columns="*" rows=", *, *" width="100%" horizontalAlignment="center" class="bloc-calculateur">
-      <Label (tap)="show2()" text="{{ 'calculateur.Frais-acquisition' | L }}" class="bloc-calculateur-label"
-        width="100%" col="0" row="0"></Label>
-      <TextField hint="0 $" class="input" keyboardType="number" maxLength="10" col="0" row="1"></TextField>
-      <Slider value="80" minValue="0" maxValue="10000000" width="90%" col="0" row="2"></Slider>
+    <GridLayout *ngIf="favActive"  ripple rippleColor="#00ff00" [width]="favSize" [height]="favSize" verticalAlignment="top"
+      [translateY]="favButtonMargin" id="btnFabSec" (tap)="calcTap()">
+      <Label text="&#xe145;" class="md-icon f-30" textAlignment="center"></Label>
     </GridLayout>
-    <GridLayout columns="*" rows="*, *, *" width="100%" horizontalAlignment="center" class="bloc-calculateur">
-      <Label (tap)="show3()" text="{{ 'calculateur.Coût-reno' | L }}" class="bloc-calculateur-label" width="100%"
-        col="0" row="0"></Label>
-      <TextField hint="0 $" class="input" keyboardType="number" maxLength="10" col="0" row="1"></TextField>
-      <Slider value="80" minValue="0" maxValue="10000000" width="90%" col="0" row="2"></Slider>
+    <GridLayout *ngIf="favActive"  ripple rippleColor="#00ff00" [width]="favSize" [height]="favSize" verticalAlignment="top"
+      [translateY]="favButtonMargin * 2" id="btnFabSec" (tap)="downLoadTap()">
+      <Label text="&#xe2c4;" class="md-icon f-30" textAlignment="center"></Label>
     </GridLayout>
-
-    <GridLayout columns="*,*" rows="*" width="100%" horizontalAlignment="center" class="bloc-calculateur">
-      <GridLayout col="0" row="0" columns="*" rows="*, *, *" width="100%" horizontalAlignment="center">
-        <Label (tap)="show4()" text="{{ 'calculateur.pourcent-Commission-courtier' | L }}"
-          class="bloc-calculateur-label" width="100%" col="0" row="0"></Label>
-        <TextField hint="0 $" class="input" keyboardType="number" maxLength="10" col="0" row="1"></TextField>
-        <Slider value="80" minValue="0" maxValue="10000000" width="90%" col="0" row="2"></Slider>
-      </GridLayout>
-      <GridLayout col="1" row="0" columns="*" rows="*, *, *" width="100%" horizontalAlignment="center"
-        class="line-left-pourcent">
-        <Label (tap)="show5()" text="{{ 'calculateur.pourcent-Profit-désiré' | L }}" class="bloc-calculateur-label"
-          width="100%" col="0" row="0"></Label>
-        <TextField hint="0 $" class="input" keyboardType="number" maxLength="10" col="0" row="1"></TextField>
-        <Slider value="80" minValue="0" maxValue="10000000" width="90%" col="0" row="2"></Slider>
-      </GridLayout>
-    </GridLayout>
-
-    <GridLayout columns="*" rows="*, *, *" width="100%" horizontalAlignment="center" class="bloc-calculateur">
-      <Label (tap)="show6()" text="{{ 'calculateur.Montant-cession' | L }}" class="bloc-calculateur-label" width="100%"
-        col="0" row="0"></Label>
-      <TextField hint="0 $" class="input" keyboardType="number" maxLength="10" col="0" row="1"></TextField>
-      <Slider value="80" minValue="0" maxValue="10000000" width="90%" col="0" row="2"></Slider>
-    </GridLayout>
-    <GridLayout columns="*" rows="*, *" width="100%" horizontalAlignment="center"
-      class="bloc-calculateur-result flipbleu-background ">
-      <Label (tap)="show7()" text="{{ 'calculateur.frais-courtier-vente' | L }}" class="bloc-calculateur-label"
-        width="100%" col="0" row="0"></Label>
-      <TextField hint="0 $" class="input" keyboardType="number" maxLength="10" col="0" row="1"></TextField>
-    </GridLayout>
-    <GridLayout columns="*" rows="*, *" width="100%" horizontalAlignment="center"
-      class="bloc-calculateur-result flipbleu-dark-background">
-      <Label (tap)="show8()" text="{{ 'calculateur.Profit-potentiel-avant-impôt' | L }}" class="bloc-calculateur-label"
-        width="100%" col="0" row="0"></Label>
-      <TextField hint="0 $" class="input" keyboardType="number" maxLength="10" col="0" row="1"></TextField>
-    </GridLayout>
-    <GridLayout columns="*" rows="*, *" width="100%" horizontalAlignment="center"
-      class="bloc-calculateur-result flipbleu-background">
-      <Label (tap)="showTextField()" text="{{ 'calculateur.Total-payer' | L }}" class="bloc-calculateur-label"
-        width="100%" col="0" row="0"></Label>
-      <TextField hint="0 $" class="input" keyboardType="number" maxLength="10" col="0" row="1"></TextField>
-    </GridLayout>
-  </StackLayout>
-</ScrollView> -->
+  </GridLayout>
+</GridLayout>

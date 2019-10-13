@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { TNSFancyAlert, TNSFancyAlertButton } from "nativescript-fancyalert";
+import * as platformModule from 'tns-core-modules/platform';
+import { AndroidData, ShapeEnum } from 'nativescript-ngx-shadow';
 
 @Component({
   selector: 'ns-calcul-de-deal',
@@ -31,8 +33,6 @@ export class CalculDeDealComponent implements OnInit {
 
   PrixAchatTotal: any = ''; // = document.getElementById('CDcase10
   estPrixAchatTotalinvalide = false;
-
-
 
   reset() {
     this.ComparablePrixdevente = 280000;
@@ -113,7 +113,20 @@ export class CalculDeDealComponent implements OnInit {
     return a !== null && !isNaN(a) && a !== undefined;
   }
 
+  favAlignTop;
+  favAlignRight;
+  favButtonMargin;
+  favSize;
+
+  favActive = false;
+
   ngOnInit() {
+    const deviceHeight: number = platformModule.screen.mainScreen.heightDIPs;
+    const deviceWidth: number = platformModule.screen.mainScreen.widthDIPs;
+    this.favAlignTop = deviceWidth * 0.15;
+    this.favAlignRight = deviceHeight * 0.03;
+    this.favButtonMargin = deviceHeight * 0.085;
+    this.favSize = deviceHeight * 0.075;
   }
 
   public show1() {
@@ -149,4 +162,18 @@ export class CalculDeDealComponent implements OnInit {
     this.routerExtensions.back();
   }
 
+
+  // fav button
+  onButtonTap() {
+
+    this.favActive = !this.favActive;
+  }
+
+  calcTap() {
+    this.favActive = !this.favActive;
+  }
+
+  downLoadTap() {
+    this.favActive = !this.favActive;
+  }
 }

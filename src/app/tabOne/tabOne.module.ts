@@ -9,6 +9,8 @@ import { tabOneComponent } from './tabOne.component';
 import { NativeScriptFormsModule } from "nativescript-angular/forms"
 import { PagerModule } from "nativescript-pager/angular";
 import { TabsBarComponent } from '../theme/components/tabs-bar';
+import { NgRippleModule } from 'nativescript-ng-ripple';
+import { NgShadowModule } from "nativescript-ngx-shadow";
 
 @NgModule({
   imports: [
@@ -16,7 +18,7 @@ import { TabsBarComponent } from '../theme/components/tabs-bar';
     NativeScriptRouterModule,
     NativeScriptRouterModule.forChild([
       { path: "", redirectTo: "tabOne" },
-      { path: "tabOne", component: tabOneComponent },
+      { path: "tabOne", component: CalculDeDealComponent },
       { path: "calculDeDeal", component: CalculDeDealComponent },
       { path: "calculImmeubleSix", component: CalculImmeubleSixComponent },
       { path: "calculPretConventionnel", component: CalculPretConventionnelComponent },
@@ -24,6 +26,8 @@ import { TabsBarComponent } from '../theme/components/tabs-bar';
     ]),
     NativeScriptFormsModule,
     PagerModule,
+    NgRippleModule,
+    NgShadowModule
   ],
   declarations: [
     CalculDeDealComponent,
