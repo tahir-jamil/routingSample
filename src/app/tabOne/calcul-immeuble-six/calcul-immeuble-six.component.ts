@@ -8,13 +8,17 @@ import { RouterExtensions } from 'nativescript-angular/router/router.module';
 })
 export class CalculImmeubleSixComponent implements OnInit {
 
+
   constructor(private routerExtensions: RouterExtensions) {
   }
 
   ngOnInit() {
+
   }
 
   goBack() {
        this.routerExtensions.back();
   }
+
+
 }
