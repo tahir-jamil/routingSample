@@ -1,0 +1,7 @@
+.gradient {
+    background: linear-gradient(to bottom, #88888833,#8888880c,#88888821);
+}
+
+.b-r-100 {
+    border-radius: 100%;
+}

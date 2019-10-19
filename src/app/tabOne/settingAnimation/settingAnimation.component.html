@@ -1,0 +1,23 @@
+<GridLayout width="auto" height="40%" verticalAlignment="top" horizontalAlignment="right" [marginRight]="favAlignRight"
+  [marginTop]="favAlignTop">
+
+    <GridLayout id="btnFab"  horizontalAlignment="center" ripple rippleColor="#00ff00" [width]="favSize" [height]="favSize" verticalAlignment="top"
+    (tap)="onButtonTap()">
+    <Label horizontalAlignment="center" verticalAlignment="middle" text="&#xe8b8;" *ngIf="!favActive"
+    [ngClass]="{'view': (favActive === false && firstTap === true)}" class="md-icon  f-30"
+    textAlignment="center"></Label>
+    <Label horizontalAlignment="center" verticalAlignment="middle" *ngIf="favActive" text="&#xe5cd;"
+    [ngClass]="{'view': favActive === true}" class="md-icon  f-30" textAlignment="center"></Label>
+  </GridLayout>
+  
+  <GridLayout *ngIf="favActive" ripple rippleColor="#00ff00" [width]="favSize" [height]="favSize"
+    verticalAlignment="top" [translateY]="favButtonMargin" id="btnFabSec" (tap)="calcTap()">
+    <Label horizontalAlignment="center" verticalAlignment="middle" text="&#xe145;" class="md-icon f-30"
+      textAlignment="center"></Label>
+  </GridLayout>
+  <GridLayout *ngIf="favActive" ripple rippleColor="#00ff00" [width]="favSize" [height]="favSize"
+    verticalAlignment="top" [translateY]="favButtonMargin * 2" id="btnFabSec" (tap)="downLoadTap()">
+    <Label horizontalAlignment="center" verticalAlignment="middle" text="&#xe2c4;" class="md-icon f-30"
+      textAlignment="center"></Label>
+  </GridLayout>
+</GridLayout>
