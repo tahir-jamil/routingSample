@@ -18,3 +18,25 @@ refer to http://docs.nativescript.org/ui/theme.
 .f-30 {
     font-size: 28dp;
 }
+
+
+#btnFab {
+    background-color: orangered;
+    border-radius: 100%;
+    color: white;
+  }
+  
+  #btnFabSec {
+    background-color: blue;
+    border-radius: 100%;
+    color: black;
+  }
+  
+  .view {
+      animation-name: rotate;
+      animation-duration: 0.3;
+  }
+  @keyframes rotate {
+      from { transform: scale(0, 0) rotate(0deg); }
+      to { transform: scale(1, 1) rotate(-100deg);}
+  }

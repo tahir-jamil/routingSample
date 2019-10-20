@@ -23,14 +23,14 @@ export class MyErrorHandler implements ErrorHandler {
    ],
    imports: [
       NativeScriptModule,
-      AppRoutingModule,
+      AppRoutingModule
    ],
    declarations: [
       AppComponent,
       ...COMPONENTS,
    ],
    providers: [
-      DataService,
+      DataService
    ],
    schemas: [
       NO_ERRORS_SCHEMA

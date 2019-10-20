@@ -10,6 +10,6 @@ export class LoginComponent {
 
     onNavigateWelcome() {
         // Navigate to welcome page with clearHistory
-        this.routerExtension.navigate(["/tabs/default"], { clearHistory: true });
+        this.routerExtension.navigate(["/tabs/default"]);
     }
 }

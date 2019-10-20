@@ -9,7 +9,7 @@
     <Label horizontalAlignment="center" verticalAlignment="middle" *ngIf="favActive" text="&#xe5cd;"
     [ngClass]="{'view': favActive === true}" class="md-icon  f-30" textAlignment="center"></Label>
   </GridLayout>
-  
+
   <GridLayout *ngIf="favActive" ripple rippleColor="#00ff00" [width]="favSize" [height]="favSize"
     verticalAlignment="top" [translateY]="favButtonMargin" id="btnFabSec" (tap)="calcTap()">
     <Label horizontalAlignment="center" verticalAlignment="middle" text="&#xe145;" class="md-icon f-30"

@@ -11,13 +11,15 @@ import { PagerModule } from "nativescript-pager/angular";
 import { TabsBarComponent } from '../theme/components/tabs-bar';
 import { NgRippleModule } from 'nativescript-ng-ripple';
 import { NgShadowModule } from "nativescript-ngx-shadow";
+import { CustomPipeModule } from '../custom-pipe.module';
+import { SettingAnimationComponent } from './settingAnimation/settingAnimation.component';
 
 @NgModule({
   imports: [
     NativeScriptCommonModule,
     NativeScriptRouterModule,
     NativeScriptRouterModule.forChild([
-      { path: "", redirectTo: "tabOne" },
+      { path: "", redirectTo: "calculDeDeal" },
       { path: "tabOne", component: CalculDeDealComponent },
       { path: "calculDeDeal", component: CalculDeDealComponent },
       { path: "calculImmeubleSix", component: CalculImmeubleSixComponent },
@@ -27,7 +29,8 @@ import { NgShadowModule } from "nativescript-ngx-shadow";
     NativeScriptFormsModule,
     PagerModule,
     NgRippleModule,
-    NgShadowModule
+    NgShadowModule,
+    CustomPipeModule
   ],
   declarations: [
     CalculDeDealComponent,
@@ -35,7 +38,9 @@ import { NgShadowModule } from "nativescript-ngx-shadow";
     CalculPretConventionnelComponent,
     CalculPretPriveComponent,
     tabOneComponent,
-    TabsBarComponent
-  ]
+    TabsBarComponent,
+    SettingAnimationComponent
+  ],
+  providers: []
 })
 export class TabOneModule { }
