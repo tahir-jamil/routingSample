@@ -1,31 +1,32 @@
 <ActionBar>
   <StackLayout orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="left">
-    <Image src="~/images/logo-bar.png" class="logoapp"></Image>
+    <!-- <Image src="~/images/logo-bar.png" class="logoapp"></Image> -->
   </StackLayout>
 </ActionBar>
 
-
-<!--bartop-->
-
 <GridLayout rows="*, auto">
 
-  <WebView #myWebView row="0" col="0" class="web" (loadFinished)="onLoadFinished($event)"
+  <WebView #myWebView row="0"  (loadStarted)="onLoadStarted($event)"  col="0" class="web" (loadFinished)="onLoadFinished($event)"
     (loaded)="onLoadStarted($event)" id="myWebView" [src]="webViewSrc">
   </WebView>
 
-  <GridLayout row="1" height="50" class="navigationwebview" columns="*,*,*,*,*">
-    <GridLayout col="0">
-      <Label text="&#xf053;" #labelOne class="fal" (tap)="goBack(labelOne)"></Label>
+  <GridLayout row="1" height="50" class="navigationwebview" columns="*,*,*,*">
+    <GridLayout col="0" ripple rippleColor="#cccccc" (tap)="goBack()">
+      <Label text="&#xf053;" [ngClass]="{'activeColor': canGoBack}" horizontalAlignment="center" verticalAlignment="middle"
+        #labelOne class="inactiveColor fal f-20" ></Label>
     </GridLayout>
-    <GridLayout col="1">
-      <Label text="&#xf054;" #labelForward class="fal navbariconwebview" (tap)="goForward(labelForward)"></Label>
+    <GridLayout col="1" ripple rippleColor="#cccccc" (tap)="goForward()">
+      <Label text="&#xf054;" [ngClass]="{'activeColor': canGoForword}" horizontalAlignment="center" verticalAlignment="middle"
+        #labelForward class="inactiveColor fal f-20 navbariconwebview" ></Label>
     </GridLayout>
-    <GridLayout col="2">
-      <Label text="&#xf80a;" #labelHome color="#4d4d4d" (tap)="goHome(labelHome)"
-        class="fal navbariconwebview roundicon"></Label>
+    <GridLayout col="2" ripple rippleColor="#cccccc"  (tap)="goHome()">
+      <Label text="&#xf015;"  [ngClass]="{'activeColor': canGoHome}" horizontalAlignment="center" verticalAlignment="middle"
+        #labelHome 
+        class="inactiveColor fal f-20 navbariconwebview roundicon"></Label>
     </GridLayout>
-    <GridLayout col="4">
-      <Label text="&#xf1e0;" class="fal navbariconwebview"></Label>
+    <GridLayout col="3" ripple rippleColor="#cccccc" (tap)="sharePartner()">
+      <Label text="&#xf1e0;"  horizontalAlignment="center" verticalAlignment="middle"
+        class="inactiveColor fal f-20 navbariconwebview"></Label>
     </GridLayout>
   </GridLayout>
 </GridLayout>

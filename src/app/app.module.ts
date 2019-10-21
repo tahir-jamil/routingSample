@@ -7,7 +7,6 @@ import { DataService } from "./data.service";
 import { NSModuleFactoryLoader } from "nativescript-angular/router";
 
 import { enable as traceEnable, addCategories } from "tns-core-modules/trace";
-
 traceEnable();
 
 export class MyErrorHandler implements ErrorHandler {
@@ -23,7 +22,7 @@ export class MyErrorHandler implements ErrorHandler {
    ],
    imports: [
       NativeScriptModule,
-      AppRoutingModule
+      AppRoutingModule,
    ],
    declarations: [
       AppComponent,

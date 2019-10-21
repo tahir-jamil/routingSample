@@ -5,11 +5,13 @@ import { NativeScriptCommonModule } from "nativescript-angular/common";
 import { TabsComponent } from "./tabs.component";
 import { TabFourComponent } from "../tabFour/tabFour.component";
 import { TabThreeComponent } from "../tabThree/tabThree.component";
+import { NgRippleModule } from 'nativescript-ng-ripple';
 
 @NgModule({
     imports: [
         NativeScriptCommonModule,
         NativeScriptRouterModule,
+        NgRippleModule,
         NativeScriptRouterModule.forChild([
             {
                 path: "default", component: TabsComponent, children: [
@@ -37,7 +39,8 @@ import { TabThreeComponent } from "../tabThree/tabThree.component";
                     }
                 ]
             }
-        ])
+        ]),
+        
     ],
     declarations: [
         TabsComponent,

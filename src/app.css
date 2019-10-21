@@ -14,11 +14,15 @@ refer to http://docs.nativescript.org/ui/theme.
     font-family: "Material Icons", "MaterialIcons-Regular","materialicons";
 }
 .fal {
-     font-family: "FontAweasome", "fontAwesome";
+     font-family: "FontAwesome",  "fontAwesome";
 }
 
 .f-30 {
     font-size: 28dp;
+}
+
+.f-20 {
+    font-size: 20dp;
 }
 
 #btnFab {

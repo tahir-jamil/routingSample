@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { WebView, LoadEventData } from "tns-core-modules/ui/web-view";
 import { Page, EventData } from 'tns-core-modules/ui/page/page';
-// import * as SocialShare from "nativescript-social-share";
+import * as SocialShare from "nativescript-social-share";
 
 @Component({
   selector: 'ns-tabThree',
@@ -12,21 +12,25 @@ export class TabThreeComponent implements OnInit {
 
   public webViewSrc: string = "https://flipimmobilier.com/nos-partenaires/";
   public enabled: boolean = false;
-  public canBackColor: boolean = false;
+
+  public touchResult = "Touch: x: _ y: _";
+
+  public canGoBack = false;
+  public canGoForword = false;
+  public canGoHome = false;
 
   @ViewChild("myWebView", { read: ElementRef, static: false }) webViewRef: ElementRef;
   @ViewChild("urlField", { read: ElementRef, static: false }) urlFieldRef: ElementRef;
 
-  public goHome(labelRef) {
-    this.setActiveColor(labelRef);
+  public goHome() {
     let webview: WebView = this.webViewRef.nativeElement;
     while (webview.canGoBack) {
       webview.goBack();
     }
   }
 
-  goBack(labelRef) {
-    this.setActiveColor(labelRef);
+
+  goBack() {
     let webview: WebView = this.webViewRef.nativeElement;
     if (webview.canGoBack) {
       webview.goBack();
@@ -34,15 +38,46 @@ export class TabThreeComponent implements OnInit {
     }
   }
 
-  setActiveColor(labelRef) {
-    labelRef.color = "red";
-    setTimeout(() => {
-      labelRef.color = "black";
-    }, 200);
+
+  public onLoadStarted(args: LoadEventData) {
+    if (!args.error) {
+      this.checkGoBack();
+      this.checkGoForword();
+    } else {
+
+    }
   }
 
-  goForward(labelRef) {
-    this.setActiveColor(labelRef);
+  public checkGoBack() {
+    setTimeout(() => {
+      if (this.webViewRef.nativeElement) {
+        let webview: WebView = this.webViewRef.nativeElement;
+        if (webview.canGoBack) {
+          this.canGoBack = true;
+          this.canGoHome = true;
+        } else {
+          this.canGoBack = false;
+          this.canGoHome = false;
+        }
+      }
+    }, 1000);
+  }
+
+
+  checkGoForword() {
+    setTimeout(() => {
+      if (this.webViewRef.nativeElement) {
+        let webview: WebView = this.webViewRef.nativeElement;
+        if (webview.canGoForward) {
+          this.canGoForword = true;
+        } else {
+          this.canGoForword = false;
+        }
+      }
+    }, 1000);
+  }
+
+  goForward() {
     let webview: WebView = this.webViewRef.nativeElement;
     if (webview.canGoForward) {
       webview.goForward();
@@ -52,7 +87,7 @@ export class TabThreeComponent implements OnInit {
   }
 
   sharePartner() {
-    // SocialShare.shareUrl("SHARE WEBADRESS INTO", "L'application #1 Pour l'immobilier au Québec", "Et c'est 100% Gratuit!");
+    SocialShare.shareUrl("SHARE WEBADRESS INTO", "L'application #1 Pour l'immobilier au Québec", "Et c'est 100% Gratuit!");
   }
 
   constructor() { }
@@ -62,18 +97,6 @@ export class TabThreeComponent implements OnInit {
   }
 
   onWebViewLoaded(args: EventData) {
-  }
-
-  onLoadStarted(args) {
-    this.loader = true;
-    const page: Page = <Page>args.object;
-    let message;
-    if (!args.error) {
-      message = `WebView started loading of ${args.url}`;
-    } else {
-      message = `Error loading  ${args.url} : ${args.error}`;
-    }
-    console.log(message);
   }
 
   public onLoadFinished(args: LoadEventData) {
@@ -86,12 +109,9 @@ export class TabThreeComponent implements OnInit {
 
     if (webView.ios) {
       webView.ios.evaluateJavaScriptCompletionHandler(jsStr,
-        function (
-          result,
-          error
-        ) {
+        function (result, error) {
           if (error) {
-            console.log("error...");
+            console.log("error...bitch");
           }
         });
 

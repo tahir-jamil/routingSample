@@ -10,7 +10,6 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms"
 import { PagerModule } from "nativescript-pager/angular";
 import { TabsBarComponent } from '../theme/components/tabs-bar';
 import { NgRippleModule } from 'nativescript-ng-ripple';
-import { NgShadowModule } from "nativescript-ngx-shadow";
 import { CustomPipeModule } from '../custom-pipe.module';
 import { SettingAnimationComponent } from './settingAnimation/settingAnimation.component';
 
@@ -29,7 +28,6 @@ import { SettingAnimationComponent } from './settingAnimation/settingAnimation.c
     NativeScriptFormsModule,
     PagerModule,
     NgRippleModule,
-    NgShadowModule,
     CustomPipeModule
   ],
   declarations: [
