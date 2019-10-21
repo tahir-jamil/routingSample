@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { WebView, LoadEventData } from "tns-core-modules/ui/web-view";
-import { Page, Observable, EventData } from 'tns-core-modules/ui/page/page';
+import { Page, EventData } from 'tns-core-modules/ui/page/page';
+// import * as SocialShare from "nativescript-social-share";
 
 @Component({
   selector: 'ns-tabThree',
@@ -9,14 +10,58 @@ import { Page, Observable, EventData } from 'tns-core-modules/ui/page/page';
 })
 export class TabThreeComponent implements OnInit {
 
+  public webViewSrc: string = "https://flipimmobilier.com/nos-partenaires/";
+  public enabled: boolean = false;
+  public canBackColor: boolean = false;
+
+  @ViewChild("myWebView", { read: ElementRef, static: false }) webViewRef: ElementRef;
+  @ViewChild("urlField", { read: ElementRef, static: false }) urlFieldRef: ElementRef;
+
+  public goHome(labelRef) {
+    this.setActiveColor(labelRef);
+    let webview: WebView = this.webViewRef.nativeElement;
+    while (webview.canGoBack) {
+      webview.goBack();
+    }
+  }
+
+  goBack(labelRef) {
+    this.setActiveColor(labelRef);
+    let webview: WebView = this.webViewRef.nativeElement;
+    if (webview.canGoBack) {
+      webview.goBack();
+      this.enabled = true;
+    }
+  }
+
+  setActiveColor(labelRef) {
+    labelRef.color = "red";
+    setTimeout(() => {
+      labelRef.color = "black";
+    }, 200);
+  }
+
+  goForward(labelRef) {
+    this.setActiveColor(labelRef);
+    let webview: WebView = this.webViewRef.nativeElement;
+    if (webview.canGoForward) {
+      webview.goForward();
+    } else {
+      this.enabled = false;
+    }
+  }
+
+  sharePartner() {
+    // SocialShare.shareUrl("SHARE WEBADRESS INTO", "L'application #1 Pour l'immobilier au Québec", "Et c'est 100% Gratuit!");
+  }
+
   constructor() { }
   loader = true;
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
   onWebViewLoaded(args: EventData) {
-
   }
 
   onLoadStarted(args) {
@@ -32,13 +77,12 @@ export class TabThreeComponent implements OnInit {
   }
 
   public onLoadFinished(args: LoadEventData) {
-    this.loader = false;
     const webView = <WebView>args.object,
       jsStr = `var parent = document.getElementsByClassName('site-header').item(0);
-      var style = document.createElement('style');
-      style.type = 'text/css';
-      style.innerHTML = ".site-header, .site-footer  {display: none !important;}";
-      parent.appendChild(style)`;
+         var style = document.createElement('style');
+         style.type = 'text/css';
+         style.innerHTML = ".site-footer{display:none !important}.form-contact-partner{display:none !important}.icon-share-partner{display:none !important}.listing-address-directions{display:none !important}";
+         parent.appendChild(style)`;
 
     if (webView.ios) {
       webView.ios.evaluateJavaScriptCompletionHandler(jsStr,
@@ -50,6 +94,7 @@ export class TabThreeComponent implements OnInit {
             console.log("error...");
           }
         });
+
     } else if (webView.android) {
       // Works only on Android 19 and above
       webView.android.evaluateJavascript(
@@ -59,14 +104,5 @@ export class TabThreeComponent implements OnInit {
     }
 
   }
-
-  // onNavigatingTo(args) {
-  //   const page: Page = <Page>args.object;
-  //   const vm = new Observable();
-  //   vm.set("webViewSrc", "https://docs.nativescript.org/");
-  //   vm.set("result", "");
-  //   vm.set("tftext", "https://docs.nativescript.org/");
-  //   page.bindingContext = vm;
-  // }
 
 }

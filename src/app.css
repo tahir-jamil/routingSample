@@ -10,15 +10,16 @@ of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
 */
 @import '~nativescript-theme-core/css/core.light.css';
-
 .md-icon {
     font-family: "Material Icons", "MaterialIcons-Regular","materialicons";
+}
+.fal {
+     font-family: "FontAweasome", "fontAwesome";
 }
 
 .f-30 {
     font-size: 28dp;
 }
-
 
 #btnFab {
     background-color: orangered;
@@ -31,7 +32,7 @@ refer to http://docs.nativescript.org/ui/theme.
     border-radius: 100%;
     color: black;
   }
-  
+
   .view {
       animation-name: rotate;
       animation-duration: 0.3;
@@ -40,3 +41,4 @@ refer to http://docs.nativescript.org/ui/theme.
       from { transform: scale(0, 0) rotate(0deg); }
       to { transform: scale(1, 1) rotate(-100deg);}
   }
+  

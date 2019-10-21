@@ -1,8 +1,31 @@
-<GridLayout rows="" columns="">
-  
-  <WebView row="1" 
-  (loadFinished)="onLoadFinished($event)"
-  (loaded)="onLoadStarted($event)" id="myWebView" src="https://flipimmobilier.com/" >
+<ActionBar>
+  <StackLayout orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="left">
+    <Image src="~/images/logo-bar.png" class="logoapp"></Image>
+  </StackLayout>
+</ActionBar>
+
+
+<!--bartop-->
+
+<GridLayout rows="*, auto">
+
+  <WebView #myWebView row="0" col="0" class="web" (loadFinished)="onLoadFinished($event)"
+    (loaded)="onLoadStarted($event)" id="myWebView" [src]="webViewSrc">
   </WebView>
-  <ActivityIndicator width="100" height="100" [busy]="loader" class="activity-indicator"></ActivityIndicator>
+
+  <GridLayout row="1" height="50" class="navigationwebview" columns="*,*,*,*,*">
+    <GridLayout col="0">
+      <Label text="&#xf053;" #labelOne class="fal" (tap)="goBack(labelOne)"></Label>
+    </GridLayout>
+    <GridLayout col="1">
+      <Label text="&#xf054;" #labelForward class="fal navbariconwebview" (tap)="goForward(labelForward)"></Label>
+    </GridLayout>
+    <GridLayout col="2">
+      <Label text="&#xf80a;" #labelHome color="#4d4d4d" (tap)="goHome(labelHome)"
+        class="fal navbariconwebview roundicon"></Label>
+    </GridLayout>
+    <GridLayout col="4">
+      <Label text="&#xf1e0;" class="fal navbariconwebview"></Label>
+    </GridLayout>
+  </GridLayout>
 </GridLayout>

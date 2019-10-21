@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router/router.module';
 import { TNSFancyAlert, TNSFancyAlertButton } from "nativescript-fancyalert";
 // import { localize } from "nativescript-localize";
@@ -15,6 +15,9 @@ import { CurrencyPipe } from '@angular/common'
 export class CalculDeDealComponent implements OnInit {
 
   public value = "";
+
+   @ViewChild('textfieldref', {static: true}) textfieldref: TextField;
+
   constructor(private routerExtensions: RouterExtensions, private cdRef: ChangeDetectorRef, private cp: CurrencyPipe) { }
   //------------------------------------------------------------------------------------------------------------
   //prix comparable
@@ -25,6 +28,7 @@ export class CalculDeDealComponent implements OnInit {
   }
 
   public onTextChange(args, value?) {
+    // this.textfieldref.nativeElement.__nativeView.getSelectionStart();
     let textfieldValue = '';
     if (args === 'manual') {
       textfieldValue = value;
@@ -37,11 +41,11 @@ export class CalculDeDealComponent implements OnInit {
       if (textfieldValue.includes("$")) {
         let value = textfieldValue.replace(/\D/g, '');
         setTimeout(() => {
-          this.PrixComparable = this.cp.transform(value, 'USD', true, '1.0'); // $12,345
+          this.PrixComparable = this.cp.transform(value, 'USD', 'symbol', '1.0'); // $12,345
         }, 100)
       } else {
         setTimeout(() => {
-          this.PrixComparable = this.cp.transform(textfieldValue, 'USD', true, '1.0-0'); // $12,345
+          this.PrixComparable = this.cp.transform(textfieldValue, 'USD', 'symbol', '1.0-0'); // $12,345
         }, 100);
       }
     }

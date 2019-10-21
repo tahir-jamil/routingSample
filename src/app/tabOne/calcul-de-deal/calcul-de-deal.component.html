@@ -1,7 +1,7 @@
 <ActionBar>
     <NavigationButton (tap)="goBack()" text="Go Back" android.systemIcon="ic_menu_back"></NavigationButton>
     <StackLayout orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="center">
-        <Image src="~/images/logo-bar.png" class="logoapp"></Image>
+        <!-- <Image src="~/images/logo-bar.png" class="logoapp"></Image> -->
     </StackLayout>
 </ActionBar>
 
@@ -21,8 +21,8 @@
 
     <StackLayout orientation="vertical">
         <GridLayout columns="*" rows="*, *, *" width="100%" horizontalAlignment="center" class="bloc-calculateur">
-            <TextField row="1" backgroundColor="red" [text]="getPrixComparable | moneyFormat"
-                (textChange)="onTextChange($event)" id="fieldValue" keyboardType="number" col="0" class="input">
+            <TextField row="1" backgroundColor="red" #textfieldref [text]="getPrixComparablez"
+                (textChange)="onTextChange($event)"  keyboardType="number" col="0" class="input">
             </TextField>
             <!-- <Label backgroundColor="blue" color="white" horizontalAlignment="center" [text]="getPrixComparable | currency : 'USD' : 'symbol': '1.0-0' | moneyFormat" textWrap="true"></Label> -->
             <!-- <Slider [value]="getPrixComparable"   (valueChange)="onSliderValueChange($event)" minValue="0" maxValue="1000000" col="0" row="2"></Slider> -->
