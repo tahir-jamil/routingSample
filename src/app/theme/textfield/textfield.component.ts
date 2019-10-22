@@ -13,6 +13,8 @@ export class TextfieldComponent implements OnInit {
   @Input() inputValue: string = '0';
   @Input() currencyType: string = '$';
   @Input() hint: string = '$';
+  @Input() minValue: string = '0';
+  @Input() maxValue: string = '4000';
 
   private fieldValue: TextField;
   sliderValue;
@@ -40,21 +42,29 @@ export class TextfieldComponent implements OnInit {
   }
 
   changeValue(event: any, manual) {
-    
-    if (event && event.object &&  event.object.text) {
-      this.sliderValue = event.object.text;
+    let value;
+    if (event && event.object && event.object.text && event.object.text) {
+      this.sliderValue = event.object.text.replace(/\s/g, "");
     }
 
     if (manual == true) {
       if (event) {
-        // this.calculateValue(event);
+        value = event;
       }
     } else {
       if (event.object.text) {
-          let value: string = event.object.text;
-          this.calculateValue(value);
+        value = event.object.text;
+      }
+    }
+
+    if (value) {
+      value = value.toString();
+      value = value.replace(/\D/g, '');
+      if (parseInt(value) <= parseInt(this.maxValue)) {
+        this.calculateValue(value);
       } else {
-        /*  this.propagateChange(''); */
+        this.fieldValue.text = this.maxValue;
+        return false;
       }
     }
 
@@ -63,8 +73,6 @@ export class TextfieldComponent implements OnInit {
 
 
   calculateValue(value) {
-    value = value.toString();
-    value = value.replace(/\D/g, '');
 
     if (value.length === 3) {
       value = value.replace(/(\d{1})(\d{2})/, '$1$2');
