@@ -6,91 +6,12 @@
 </ActionBar>
 
 
-<!--  <GridLayout columns="*" rows="*, *, *" width="100%" horizontalAlignment="center" class="bloc-calculateur">
-      <Label (tap)="show2()" text="{{ 'calculateur.Frais-acquisition' | L }}" class="bloc-calculateur-label" width="100%" col="0" row="0"></Label>
-      <TextField [hint]="FraisAcquisition" (textChange)="FraisAcquisition = removeCurrencyPipeFormat($event);TotalDealRapide();" class="input" keyboardType="number" maxLength="10" col="0" row="1"></TextField>
-      <Slider [value]="FraisAcquisition" (valueChange)="FraisAcquisition = removeCurrencyPipeFormat($event);TotalDealRapide();" minValue="0" maxValue="250000" width="90%" col="0" row="2"></Slider>
-  </GridLayout>  -->
-
-
-<!--button-->
-
-
-
 <ScrollView iosOverflowSafeArea="false" class="page-calcul-de-deal">
-
     <StackLayout orientation="vertical">
-        <GridLayout columns="*" rows="*, *, *" width="100%" horizontalAlignment="center" class="bloc-calculateur">
-            <TextField row="1" backgroundColor="red" #textfieldref [text]="getPrixComparablez"
-                (textChange)="onTextChange($event)"  keyboardType="number" col="0" class="input">
-            </TextField>
-            <!-- <Label backgroundColor="blue" color="white" horizontalAlignment="center" [text]="getPrixComparable | currency : 'USD' : 'symbol': '1.0-0' | moneyFormat" textWrap="true"></Label> -->
-            <!-- <Slider [value]="getPrixComparable"   (valueChange)="onSliderValueChange($event)" minValue="0" maxValue="1000000" col="0" row="2"></Slider> -->
+        <GridLayout columns="*" rows="*" width="100%" horizontalAlignment="center" class="bloc-calculateur">
+            <GridLayout rows="*" columns="*">
+                <ns-textfield title="this is the title" hint="0" currencyType="$"></ns-textfield>
+            </GridLayout>
         </GridLayout>
-
-        <GridLayout columns="*" rows="*, *, *" width="100%" horizontalAlignment="center" class="bloc-calculateur">
-            <!-- <Label (tap)="show1()" text="{{ 'calculateur.Frais-acquisition' | L }}" class="bloc-calculateur-label" width="100%" col="0" row="0"></Label> -->
-            <!-- <TextField [text]="getFraisAcquisition | currency : 'USD' : 'symbol': '1.0-0' | moneyFormat" (textChange)="onTextChange1($event)"         keyboardType="number" col="0" row="1" class="input"></TextField>
-                          <Slider [value]="getFraisAcquisition"   (valueChange)="onSliderValueChange1($event)" minValue="0" maxValue="1000000" col="0" row="2"></Slider> -->
-        </GridLayout>
-
-        <GridLayout columns="*" rows="*, *, *" width="100%" horizontalAlignment="center" class="bloc-calculateur">
-            <!-- <Label (tap)="show1()" text="total-deal-rapide" class="bloc-calculateur-label" width="100%" col="0" row="0"></Label> -->
-            <!-- <TextField [text]="PrixAchatTotal | currency : 'USD' : 'symbol': '1.0-0' | moneyFormat" col="0" row="1" class="input"></TextField>                               -->
-        </GridLayout>
-
-
-
-        <!--          <GridLayout columns="*" rows="*, *, *" width="100%" horizontalAlignment="center" class="bloc-calculateur">
-                   <Label (tap)="show1()" text="{{ 'calculateur.Frais-acquisition' | L }}" class="bloc-calculateur-label" width="100%" col="0" row="0"></Label>
-                   <TextField [text]="ComparablePrixdevente | currency : 'USD' : 'symbol': '1.0-0' | moneyFormat" (textChange)="ComparablePrixdevente = onFieldChange($event)" class="input" keyboardType="numberPad" keyboardType="number" maxLength="10" col="0" row="1"></TextField>
-                   <Slider [(ngModel)]="ComparablePrixdevente" minValue="0" maxValue="1000000" width="90%" col="0" row="2"></Slider>
-              </GridLayout>
-              <GridLayout columns="*" rows="*, *, *" width="100%" horizontalAlignment="center" class="bloc-calculateur">
-                  <Label (tap)="show2()" text="{{ 'calculateur.Frais-acquisition' | L }}" class="bloc-calculateur-label" width="100%" col="0" row="0"></Label>
-                  <TextField [text]="FraisAcquisition | currency : 'USD' : 'symbol': '1.0-0' | moneyFormat" (textChange)="FraisAcquisition = onFieldChange($event)" class="input" keyboardType="number" maxLength="10" col="0" row="1"></TextField>
-                  <Slider [(ngModel)]="FraisAcquisition" minValue="0" maxValue="250000" width="90%" col="0" row="2"></Slider>
-              </GridLayout>
-              <GridLayout columns="*" rows="*, *, *" width="100%" horizontalAlignment="center" class="bloc-calculateur">
-                  <Label (tap)="show3()" text="{{ 'calculateur.Coût-reno' | L }}" class="bloc-calculateur-label" width="100%" col="0" row="0"></Label>
-                  <TextField [text]="CoutRenovation | currency : 'USD' : 'symbol': '1.0-0' | moneyFormat" (textChange)="CoutRenovation = onFieldChange($event)" class="input" keyboardType="number" maxLength="10" col="0" row="1"></TextField>
-                  <Slider [(ngModel)]="CoutRenovation" minValue="5" maxValue="500000" width="90%" col="0" row="2"></Slider>
-              </GridLayout>
-      
-      <GridLayout columns="*,*" rows="*" width="100%" horizontalAlignment="center" class="bloc-calculateur">
-              <GridLayout col="0" row="0" columns="*" rows="*, *, *" width="100%" horizontalAlignment="center">
-                  <Label (tap)="show4()" text="{{ 'calculateur.pourcent-Commission-courtier' | L }}" class="bloc-calculateur-label" width="100%" col="0" row="0"></Label>
-                  <TextField [text]="FraisCourtierPoucent" (textChange)="FraisCourtierPoucent = onFieldChange($event)" class="input" keyboardType="number" maxLength="10" col="0" row="1"></TextField>
-                  <Slider [(ngModel)]="FraisCourtierPoucent" minValue="0" maxValue="100" width="90%" col="0" row="2"></Slider>
-              </GridLayout>
-              <GridLayout col="1" row="0" columns="*" rows="*, *, *" width="100%" horizontalAlignment="center" class="line-left-pourcent">
-                  <Label (tap)="show5()" text="{{ 'calculateur.pourcent-Profit-désiré' | L }}" class="bloc-calculateur-label" width="100%" col="0" row="0"></Label>
-                  <TextField [text]="ProfitDesirePoucent" (textChange)="ProfitDesirePoucent = onFieldChange($event)" class="input" keyboardType="number" maxLength="10" col="0" row="1"></TextField>
-                  <Slider [(ngModel)]="ProfitDesirePoucent" minValue="0" maxValue="100" width="90%" col="0" row="2"></Slider>
-              </GridLayout>
-      </GridLayout>
-      
-              <GridLayout columns="*" rows="*, *, *" width="100%" horizontalAlignment="center" class="bloc-calculateur">
-                  <Label (tap)="show6()" text="{{ 'calculateur.Montant-cession' | L }}" class="bloc-calculateur-label" width="100%" col="0" row="0"></Label>
-                  <TextField [text]="CedassionPromesse | currency : 'USD' : 'symbol': '1.0-0' | moneyFormat" (textChange)="CedassionPromesse = onFieldChange($event)" class="input" keyboardType="number" maxLength="10" col="0" row="1"></TextField>
-                  <Slider [(ngModel)]="CedassionPromesse" minValue="0" maxValue="300000" width="90%" col="0" row="2"></Slider>
-              </GridLayout>
-              <GridLayout columns="*" rows="*, *" width="100%" horizontalAlignment="center" class="bloc-calculateur-result flipbleu-background ">
-                  <Label (tap)="show7()" text="{{ 'calculateur.frais-courtier-vente' | L }}" class="bloc-calculateur-label" width="100%" col="0" row="0"></Label>
-                  <TextField [text]="FraisCourtier | currency : 'USD' : 'symbol': '1.0-0' | moneyFormat" (textChange)="FraisCourtier = removeCurrencyPipeFormat($event)" editable="false"class="input" keyboardType="number" maxLength="10" col="0" row="1"></TextField>
-              </GridLayout>
-              <GridLayout columns="*" rows="*, *" width="100%" horizontalAlignment="center" class="bloc-calculateur-result flipbleu-dark-background">
-                  <Label (tap)="show8()" text="{{ 'calculateur.Profit-potentiel-avant-impôt' | L }}" class="bloc-calculateur-label" width="100%" col="0" row="0"></Label>
-                  <TextField [text]="ProfitPotentiel | currency : 'USD' : 'symbol': '1.0-0' | moneyFormat" (textChange)="ProfitPotentiel = removeCurrencyPipeFormat($event)" editable="false" class="input" keyboardType="number" maxLength="10" col="0" row="1"></TextField>
-              </GridLayout>
-              <GridLayout columns="*" rows="*, *" width="100%" horizontalAlignment="center" class="bloc-calculateur-result flipbleu-background">
-                  <Label (tap)="showTextField()" text="{{ 'calculateur.Total-payer' | L }}" class="bloc-calculateur-label" width="100%" col="0" row="0"></Label>
-                  <TextField  [text]="PrixAchatTotal | currency : 'USD' : 'symbol': '1.0-0' | moneyFormat" (textChange)="PrixAchatTotal = removeCurrencyPipeFormat($event)" editable="false" class="input" keyboardType="number" maxLength="10" col="0" row="1"></TextField>
-              </GridLayout>
-
-
-          -->
-
     </StackLayout>
-
 </ScrollView>

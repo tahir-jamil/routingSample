@@ -24,6 +24,7 @@
     "@angular/router": "8.0.0",
     "nativescript-angular": "8.0.2",
     "nativescript-fancyalert": "^3.0.9",
+    "nativescript-maskedinput": "0.0.3",
     "nativescript-ng-ripple": "^2.0.1",
     "nativescript-pager": "^11.0.10",
     "nativescript-social-share": "^1.5.2",

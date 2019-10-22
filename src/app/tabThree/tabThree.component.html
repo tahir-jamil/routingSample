@@ -9,7 +9,7 @@
   <WebView #myWebView row="0"  (loadStarted)="onLoadStarted($event)"  col="0" class="web" (loadFinished)="onLoadFinished($event)"
     (loaded)="onLoadStarted($event)" id="myWebView" [src]="webViewSrc">
   </WebView>
-
+  
   <GridLayout row="1" height="50" class="navigationwebview" columns="*,*,*,*">
     <GridLayout col="0" ripple rippleColor="#cccccc" (tap)="goBack()">
       <Label text="&#xf053;" [ngClass]="{'activeColor': canGoBack}" horizontalAlignment="center" verticalAlignment="middle"

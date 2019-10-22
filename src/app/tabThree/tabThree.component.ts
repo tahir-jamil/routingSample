@@ -108,19 +108,19 @@ export class TabThreeComponent implements OnInit {
          parent.appendChild(style)`;
 
     if (webView.ios) {
-      webView.ios.evaluateJavaScriptCompletionHandler(jsStr,
-        function (result, error) {
-          if (error) {
-            console.log("error...bitch");
-          }
-        });
+      // webView.ios.evaluateJavaScriptCompletionHandler(jsStr,
+      //   function (result, error) {
+      //     if (error) {
+      //       console.log("error...bitch");
+      //     }
+      //   });
 
     } else if (webView.android) {
       // Works only on Android 19 and above
-      webView.android.evaluateJavascript(
-        jsStr,
-        null
-      );
+      // webView.android.evaluateJavascript(
+      //   jsStr,
+      //   null
+      // );
     }
 
   }

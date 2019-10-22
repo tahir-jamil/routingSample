@@ -7,6 +7,11 @@ export class MoneyFormatPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
     
-    return ((value !== null) ? value.replace(/[\,]/g, ' ') : value);
+    if (value) {
+      value = value.toString();
+      return ((value) ? value.replace(/\B(?=(\d{3})+(?!\d))/g, "\u0020") : value);
+    }
+
   } 
 }
+

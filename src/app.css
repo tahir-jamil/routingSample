@@ -9,40 +9,43 @@ In many cases you may want to use the NativeScript core theme instead
 of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
 */
-@import '~nativescript-theme-core/css/core.light.css';
+@import "~nativescript-theme-core/css/core.light.css";
 .md-icon {
-    font-family: "Material Icons", "MaterialIcons-Regular","materialicons";
+  font-family: "Material Icons", "MaterialIcons-Regular", "materialicons";
 }
 .fal {
-     font-family: "FontAwesome",  "fontAwesome";
+  font-family: "FontAwesome", "fontAwesome";
 }
 
 .f-30 {
-    font-size: 28dp;
+  font-size: 28dp;
 }
 
 .f-20 {
-    font-size: 20dp;
+  font-size: 20dp;
 }
 
 #btnFab {
-    background-color: orangered;
-    border-radius: 100%;
-    color: white;
-  }
-  
-  #btnFabSec {
-    background-color: blue;
-    border-radius: 100%;
-    color: black;
-  }
+  background-color: orangered;
+  border-radius: 100%;
+  color: white;
+}
 
-  .view {
-      animation-name: rotate;
-      animation-duration: 0.3;
+#btnFabSec {
+  background-color: blue;
+  border-radius: 100%;
+  color: black;
+}
+
+.view {
+  animation-name: rotate;
+  animation-duration: 0.3;
+}
+@keyframes rotate {
+  from {
+    transform: scale(0, 0) rotate(0deg);
   }
-  @keyframes rotate {
-      from { transform: scale(0, 0) rotate(0deg); }
-      to { transform: scale(1, 1) rotate(-100deg);}
+  to {
+    transform: scale(1, 1) rotate(-100deg);
   }
-  
+}

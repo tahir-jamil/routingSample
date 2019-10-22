@@ -8,27 +8,29 @@ import { CalculPretPriveComponent } from './calcul-pret-prive/calcul-pret-prive.
 import { tabOneComponent } from './tabOne.component';
 import { NativeScriptFormsModule } from "nativescript-angular/forms"
 import { PagerModule } from "nativescript-pager/angular";
-import { TabsBarComponent } from '../theme/components/tabs-bar';
+
 import { NgRippleModule } from 'nativescript-ng-ripple';
 import { CustomPipeModule } from '../custom-pipe.module';
 import { SettingAnimationComponent } from './settingAnimation/settingAnimation.component';
+import { ThemeModule } from '../theme/theme.module';
 
 @NgModule({
   imports: [
     NativeScriptCommonModule,
     NativeScriptRouterModule,
     NativeScriptRouterModule.forChild([
-      { path: "", redirectTo: "calculDeDeal" },
       { path: "tabOne", component: CalculDeDealComponent },
       { path: "calculDeDeal", component: CalculDeDealComponent },
       { path: "calculImmeubleSix", component: CalculImmeubleSixComponent },
       { path: "calculPretConventionnel", component: CalculPretConventionnelComponent },
       { path: "calculPretPrive", component: CalculPretPriveComponent },
+      { path: "", redirectTo: "calculDeDeal" },
     ]),
     NativeScriptFormsModule,
     PagerModule,
     NgRippleModule,
-    CustomPipeModule
+    CustomPipeModule,
+    ThemeModule
   ],
   declarations: [
     CalculDeDealComponent,
@@ -36,7 +38,6 @@ import { SettingAnimationComponent } from './settingAnimation/settingAnimation.c
     CalculPretConventionnelComponent,
     CalculPretPriveComponent,
     tabOneComponent,
-    TabsBarComponent,
     SettingAnimationComponent
   ],
   providers: []
