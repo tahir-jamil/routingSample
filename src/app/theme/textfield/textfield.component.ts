@@ -17,7 +17,7 @@ export class TextfieldComponent implements OnInit {
   @Input() maxValue: string = '4000';
 
   private fieldValue: TextField;
-  sliderValue;
+  sliderValue = "0";
 
   private propagateChange = (_: any) => { };
 
@@ -49,6 +49,7 @@ export class TextfieldComponent implements OnInit {
 
     if (manual == true) {
       if (event) {
+        event = Math.floor(event); 
         value = event;
       }
     } else {
