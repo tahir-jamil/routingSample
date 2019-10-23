@@ -10,7 +10,7 @@ import { Page } from 'tns-core-modules/ui/page/page';
 export class TextfieldComponent implements OnInit {
 
   @Input() title = '';
-  @Input() inputValue: string = '0';
+  @Input() inputValue: string = '';
   @Input() currencyType: string = '$';
   @Input() hint: string = '$';
   @Input() minValue: string = '0';
