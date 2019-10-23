@@ -2,6 +2,8 @@
 .textfield {
     font-size: 20;
     placeholderColor: black;
+    border-bottom-width: 1;
+    border-color: transparent;
 }
 
 .priceType {

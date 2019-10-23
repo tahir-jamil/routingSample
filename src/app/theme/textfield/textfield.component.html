@@ -2,8 +2,10 @@
     <Label [text]="title" colSpan="3"  horizontalAlignment="center" textWrap="true"></Label>
     
     <GridLayout row="1" col="0" (tap)="addFocus()" > </GridLayout>
-    <TextField row="1" col="1"  class="m-t-3 textfield text-center" [(ngModel)]="inputValue"  id="fieldValue"
+    
+    <TextField row="1" col="1"  minWidth="50"  class="m-t-3 textfield text-right"  [(ngModel)]="inputValue"  id="fieldValue"
     (textChange)="changeValue($event)" keyboardType="number" [hint]="hint"></TextField>
+
     <GridLayout row="1" col="2" (tap)="addFocus()" rows="*" columns="*" verticalAlignment="middle">  
         <Label [text]="currencyType" col="2"  row="1" horizontalAlignment="left" verticalAlignment="middle" class="priceType m-l-5" textWrap="true"></Label>
     </GridLayout>

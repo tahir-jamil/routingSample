@@ -74,12 +74,16 @@ export class TextfieldComponent implements OnInit {
 
 
   calculateValue(value) {
-
-    if (value.length === 3) {
+    if (value.length === 2) {
       value = value.replace(/(\d{1})(\d{2})/, '$1$2');
-    } else if (value.length === 4) {
+    }
+     else if (value.length === 3) {
+      value = value.replace(/(\d{1})(\d{2})/, '$1$2');
+    }
+     else if (value.length === 4) {
       value = value.replace(/(\d{1})(\d{2})/, '$1 $2');
-    } else if (value.length === 5) {
+    }
+     else if (value.length === 5) {
       value = value.replace(/(\d{2})(\d{3})/, '$1 $2');
     } else if (value.length === 6) {
       value = value.replace(/(\d{3})(\d{2})/, '$1 $2');
